@@ -9815,6 +9815,35 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAF/VEHoax0bM0w="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF/VRmkQjbRhtg=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 40,
+							"top": 104,
+							"width": 100,
+							"height": 64,
+							"text": "Soit un objet Soit une fonction de boutons"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAF/VRmkUjdYqgI=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAF/VRmkQjbRhtg="
+							},
+							"tail": {
+								"$ref": "AAAAAAF/Uat+PxvQLkI="
+							},
+							"lineStyle": 1,
+							"points": "183:128;140:131"
 						}
 					]
 				},
