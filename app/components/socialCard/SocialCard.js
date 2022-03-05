@@ -5,7 +5,7 @@ function SocialCard ()
 {
     return(
         <View style= {styles.card} >
-            <ImageBackground source={require('./paysage.png')} style= {styles.background}  resizeMode= "center">
+            <ImageBackground source={require('./Card_test/paysage.png')} style= {styles.background}  resizeMode= "center">
             <Text style= {styles.title}> Hello to you i</Text>
             </ImageBackground>
         </View>
