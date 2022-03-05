@@ -1,8 +1,9 @@
 // app/components/App.js
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
-import Editor from './Editor'
-import SocialCard from './socialCard/SocialCard'
+// Alias pour Editor
+import React, { Component } from 'react';
+import { View, StyleSheet } from 'react-native';
+import Menu from './Menu';
+import SocialCard from './socialCard/SocialCard';
 import '../styles/App.css';
 
 export default function App() {
@@ -10,15 +11,9 @@ export default function App() {
     <View style={styles.container}>
         <h1 class='AppTitle'>Application Creation de cartes sociales</h1>
 
-        <p>Import social card here</p>
+        <SocialCard/>
 
-        <Editor/>
-
-        <div class='btnContainer'>
-            <Button title='Load'/>
-            <Button title='Save'/>
-        </div>
-        
+        <Menu/>
     </View>
   );
 }

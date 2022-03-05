@@ -1,33 +1,53 @@
 import React from 'react';
-import { StyleSheet, ImageBackground, View, Dimensions, Text } from 'react-native';
+import { StyleSheet, ImageBackground, View, Dimensions, Text, Button } from 'react-native';
+import '../../styles/SocialCard.css';
 
-function SocialCard ()
+export default function SocialCard ()
 {
+    function Upload() {
+        console.log("Call to Upload function");
+        return;
+    }
+    
+    function Display() {
+        console.log("Call to Display function");
+        return;
+    }
+
     return(
-        <View style= {styles.card} >
-            <ImageBackground source={require('./Card_test/paysage.png')} style= {styles.background}  resizeMode= "center">
-            <Text style= {styles.title}> Hello to you i</Text>
-            </ImageBackground>
+        <View>
+            <div class='card-default'>
+                <ImageBackground source={require('./Card_test/paysage.png')} style={styles.cardImg} resizeMode= "center">
+                </ImageBackground>
+                <Text style={styles.cardTitle}> Hello to you i</Text>
+                <Text style={styles.cardText}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula arcu sed velit aliquet elementum. Suspendisse commodo quis lectus vitae egestas. In vestibulum interdum libero id egestas.</Text>
+                <Text style={styles.cardUrl}> http://link/to/site.com</Text>
+            </div>
+
+            <div class='btnContainer'>
+                <Button title='Load' onPress={() => {Display()}}/>
+                <Button title='Save' onPress={() => {Upload()}}/>
+        </div>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        justifyContent: "center",
-        width: Dimensions.get('window').width,
-        
+    cardImg: {
+        gridArea: "img",
     },
-    card: {
-        flex: 1,
-        justifyContent: "center"
+
+    cardTitle: {
+        gridArea: "title",
     },
-    title:{
-        fontSize:20,
-        color: '#FFFFFF',
-        fontFamily: 'Monteserrat'
-    }
+
+    cardText: {
+        gridArea: "text",
+    },
+
+    cardUrl: {
+        gridArea: "url",
+    },
   });
 
-export{SocialCard} ;
+//export{SocialCard} ;
