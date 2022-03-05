@@ -1,1 +1,10 @@
-{}
+{
+    "Card": {
+        "default": {
+            "background": "./Card_test/paysage.png",
+            "logo": "./Card_test/logoJS.png",
+            "title": " Hello to you !",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula arcu sed velit aliquet elementum. Suspendisse commodo quis lectus vitae egestas. In vestibulum interdum libero id egestas."
+        }
+    }
+}
