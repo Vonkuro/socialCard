@@ -4,6 +4,18 @@ Carte :
         <Name>.png
 
 {
-    Names: {ADEO, Yoti,1},
-    ADEO{}
+    "Card": {
+        "ADEO":{
+            "background": "./test",
+            "logo": "./testLogo",
+            "title": "titre",
+            "subtitle": "sous titre"
+        },
+        "Yoti":{
+            "background": "./test",
+            "logo": "./testLogo",
+            "title": "titre",
+            "subtitle": "sous titre"
+        },
+    },
 }
