@@ -21,7 +21,9 @@
     "@babel/core": "^7.12.9"
   },
   "rnpm": {
-    "assets": ["./app/store/fonts"]
-   },
+    "assets": [
+      "./app/store/fonts"
+    ]
+  },
   "private": true
 }
