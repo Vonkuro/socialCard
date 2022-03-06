@@ -8,11 +8,11 @@ import SocialCard from '../socialCard/SocialCard';
 export default function Editor() {
     return (
     <View style={styles.container}>
-        <Text >Application Creation de cartes sociales</Text>
+        {/*<Text >Application Creation de cartes sociales</Text>*/}
 
         <SocialCard/>
 
-        <Menu/>
+        {/*<Menu/>*/}
     </View>
   );
 }

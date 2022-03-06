@@ -1,21 +1,38 @@
-Carte :
-    <Name>
-        <Name>.js
-        <Name>.png
 
+Voici où sont rangées les ressources d'un composant SocialCard :
+app
+    composant
+            socialCard
+                SocialCard.js
+                socialCard.json
+                defaultCard
+                    defaultBackground.png
+                    defaultLogo.png
+                    defaultXxx.xxx
+
+SocialCard.js contient la définition du composant avec la personnalisation par défaut
+La personnalisation par défaut est compilée dans le bundle
+Les personnalistions utilisateurs sont sauvegardées dans socialCard.json
+
+Voici le format de socialCard.json :
 {
     "Card": {
         "ADEO":{
-            "background": "./test",
-            "logo": "./testLogo",
-            "title": "titre",
-            "subtitle": "sous titre"
+            "backgroundUri": "./test",
+            "logoUri": "./testLogo",
+            "titleText": "titre",
+            "subtitleText": "sous titre"
         },
         "Yoti":{
-            "background": "./test",
-            "logo": "./testLogo",
-            "title": "titre",
-            "subtitle": "sous titre"
+            "backgroundUri": "./test",
+            "logoUri": "./testLogo",
+            "titleText": "titre",
+            "subtitleText": "sous titre"
         },
     },
 }
+
+
+maybe usefull code later :
+    const {default: defaultLogo } = React.lazy(() => import(config.Card.default.logo));
+    const defaultLogoUri = Image.resolveAssetSource(defaultLogo).uri;

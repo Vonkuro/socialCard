@@ -1,46 +1,74 @@
-import React from 'react';
-import { StyleSheet, ImageBackground, View, Dimensions, Text, Button } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, ImageBackground, Image, View, Dimensions, Text, Button } from 'react-native';
 
-export default function SocialCard() {
-    function Upload() {
-        console.log("Call to Upload function");
-        return;
+export default class SocialCard extends Component {
+    constructor()
+    {
+        super();
+        this.state = {
+            backgroundUri: require('./Card_test/landscape.jpg'),
+            logoUri: require("./Card_test/logoJS.png"),
+            titleText: "Le titre de la carte",
+            subtitleText: "Le sous-titre de la carte"
+        };
     }
 
-    function Display() {
-        console.log("Call to Display function");
-        return;
-    }
 
-    return (
-        <View style={styles.card}>
-            <ImageBackground source={require('./Card_test/paysage.png')} style={styles.background} resizeMode="center">
+    render()
+    {
+        return (
+            <View style={styles.card}>
+                <ImageBackground source={ this.state.backgroundUri } style={styles.background} resizeMode="center">
+                <View style={styles.contentRow}>
+                    <View style={styles.textColum}>
+                        <Image style={styles.logo} source={ this.state.logoUri }></Image>
+                    </View>
+                    <View style={styles.textColum}>
+                        <Text style={styles.title}> { this.state.titleText } </Text>
+                        <Text style={styles.subtitle}> { this.state.subtitleText } </Text>
+                    </View>
+                </View> 
             </ImageBackground>
-            <Text style={styles.title}> Hello to you i</Text>
-            <Text style={styles.title}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula arcu sed velit aliquet elementum. Suspendisse commodo quis lectus vitae egestas. In vestibulum interdum libero id egestas.</Text>
-            <Text style={styles.title}> http://link/to/site.com</Text>
-
-
-            <Button title='Load' onPress={() => { Display() }} />
-            <Button title='Save' onPress={() => { Upload() }} />
-        </View>
-    );
+            </View>
+        );
+    };
+  
 }
 
 const styles = StyleSheet.create({
+    
+    card: {
+        maxHeight: 300,
+        height: 300,
+        justifyContent: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
     background: {
-        flex: 1,
         justifyContent: "center",
         width: Dimensions.get('window').width,
+        flexWrap: "wrap",
         
     },
-    card: {
+    contentRow:{
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
+    logo:{
         flex: 1,
-        justifyContent: "center"
+    },
+    textColum:{
+        flex: 1,
+        flexDirection: "column",
+        flexWrap: "wrap",
     },
     title:{
         fontSize:20,
-        color: '#FFFFFF',
+        color: '#FFFFFF'
+    },
+    subtitle:{
+        fontSize:20,
+        color: '#FFFFFF'
     }
 });
 
