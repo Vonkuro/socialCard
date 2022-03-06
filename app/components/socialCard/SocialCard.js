@@ -1,47 +1,69 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, ImageBackground, Image, View, Dimensions, Text, Button } from 'react-native';
-import * as config from "./socialCard.json";
 
-export default function SocialCard() {
-    function Upload() {
-        console.log("Call to Upload function");
-        return;
+export default class SocialCard extends Component {
+    constructor()
+    {
+        super();
+        this.state = {
+            backgroundUri: require('./Card_test/landscape.jpg'),
+            logoUri: require("./Card_test/logoJS.png"),
+            titleText: "Le titre de la carte",
+            subtitleText: "Le sous-titre de la carte"
+        };
     }
-    const {default: defaultLogo } = React.lazy(() => import(config.Card.default.logo));
-    const defaultLogoUri = Image.resolveAssetSource(defaultLogo).uri;
 
-    function Display() {
-        console.log("Call to Display function");
-        return;
-    }
-    console.log(config.Card.default.logo);
-    return (
-        <View style={styles.card}>
-            <ImageBackground source={require('./Card_test/paysage.png')} style={styles.background} resizeMode="center">
-            <Image source={require("./Card_test/logoJS.png")}></Image>
-            <Text style={styles.title}> Hello to you !</Text>
-            <Text style={styles.title}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula arcu sed velit aliquet elementum. Suspendisse commodo quis lectus vitae egestas. In vestibulum interdum libero id egestas.</Text>
+
+    render()
+    {
+        return (
+            <View style={styles.card}>
+                <ImageBackground source={ this.state.backgroundUri } style={styles.background} resizeMode="center">
+                <View style={styles.contentRow}>
+                    <Image style={styles.logo} source={ this.state.logoUri }></Image>
+                    <View style={styles.textColum}>
+                        <Text style={styles.title}> { this.state.titleText } </Text>
+                        <Text style={styles.subtitle}> { this.state.subtitleText } </Text>
+                    </View>
+                </View> 
             </ImageBackground>
-            
-
-            <Button title='Load' onPress={() => { Display() }} />
-            <Button title='Save' onPress={() => { Upload() }} />
-        </View>
-    );
+            </View>
+        );
+    };
+  
 }
 
 const styles = StyleSheet.create({
+    
+    card: {
+        maxHeight: 250,
+        justifyContent: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
     background: {
-        flex: 1,
         justifyContent: "center",
         width: Dimensions.get('window').width,
+        flexWrap: "wrap",
         
     },
-    card: {
+    contentRow:{
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
+    logo:{
         flex: 1,
-        justifyContent: "center"
+    },
+    textColum:{
+        flex: 1,
+        flexDirection: "column",
+        flexWrap: "wrap",
     },
     title:{
+        fontSize:20,
+        color: '#FFFFFF'
+    },
+    subtitle:{
         fontSize:20,
         color: '#FFFFFF'
     }
