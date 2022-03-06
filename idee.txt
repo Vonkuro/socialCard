@@ -32,6 +32,9 @@ Voici le format de socialCard.json :
     },
 }
 
+Comment réccuper les uri dynamiquement :
+https://docs.expo.dev/versions/latest/sdk/imagepicker/
+
 
 maybe usefull code later :
     const {default: defaultLogo } = React.lazy(() => import(config.Card.default.logo));
