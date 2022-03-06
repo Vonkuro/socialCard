@@ -20,7 +20,9 @@ export default class SocialCard extends Component {
             <View style={styles.card}>
                 <ImageBackground source={ this.state.backgroundUri } style={styles.background} resizeMode="center">
                 <View style={styles.contentRow}>
-                    <Image style={styles.logo} source={ this.state.logoUri }></Image>
+                    <View style={styles.textColum}>
+                        <Image style={styles.logo} source={ this.state.logoUri }></Image>
+                    </View>
                     <View style={styles.textColum}>
                         <Text style={styles.title}> { this.state.titleText } </Text>
                         <Text style={styles.subtitle}> { this.state.subtitleText } </Text>
@@ -36,7 +38,8 @@ export default class SocialCard extends Component {
 const styles = StyleSheet.create({
     
     card: {
-        maxHeight: 250,
+        maxHeight: 300,
+        height: 300,
         justifyContent: "center",
         flexDirection: "row",
         flexWrap: "wrap",
