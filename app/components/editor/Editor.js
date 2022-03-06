@@ -2,26 +2,48 @@
 // Alias pour Editor
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { Fragment } from 'react/cjs/react.production.min';
 import Menu from '../menu/Menu';
 import SocialCard from '../socialCard/SocialCard';
 
 export default function Editor() {
     return (
     <View style={styles.container}>
-        {/*<Text >Application Creation de cartes sociales</Text>*/}
+        <Text style={styles.AppTitle} >Application Creation de cartes sociales</Text>
 
         <SocialCard/>
 
-        {/*<Menu/>*/}
+        <Menu/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    maxWidth: "800px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "10px",
+    font: "14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+  },
+
+  AppTitle: {
+      color: "white",
+      backgroundColor: "rgb(33, 150, 243)",
+      borderRadius: "5px",
+      padding: "5px",
+      textAlign: "center",
+      fontSize: "1rem",
+  },
+
+  socialCardConatiner: {
+    minWidth: "500px",
+    minWidth: "750px",
+    borderColor: "rgb(33, 150, 243)",
+    borderWidth: "3px",
+    backgroundColor: "rgb(33, 150, 243)",
   }
 });

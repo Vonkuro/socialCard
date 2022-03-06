@@ -18,16 +18,16 @@ export default class SocialCard extends Component {
     {
         return (
             <View style={styles.card}>
-                <ImageBackground source={ this.state.backgroundUri } style={styles.background} resizeMode="center">
+            <ImageBackground source={ this.state.backgroundUri } style={styles.background}>
                 <View style={styles.contentRow}>
-                    <View style={styles.textColum}>
+                    <View style={[styles.textColum, styles.logoPosition]} >
                         <Image style={styles.logo} source={ this.state.logoUri }></Image>
                     </View>
                     <View style={styles.textColum}>
-                        <Text style={styles.title}> { this.state.titleText } </Text>
+                        <Text className="Titre" style={styles.title}> { this.state.titleText } </Text>
                         <Text style={styles.subtitle}> { this.state.subtitleText } </Text>
                     </View>
-                </View> 
+                </View>
             </ImageBackground>
             </View>
         );
@@ -38,38 +38,65 @@ export default class SocialCard extends Component {
 const styles = StyleSheet.create({
     
     card: {
-        maxHeight: 300,
-        height: 300,
         justifyContent: "center",
         flexDirection: "row",
         flexWrap: "wrap",
+        width: "100%",
+        marginTop: "10px",
     },
+
     background: {
         justifyContent: "center",
-        width: Dimensions.get('window').width,
-        flexWrap: "wrap",
-        
+        maxWidth: "100%",
+        height: "auto",
     },
+
     contentRow:{
+        width: "100%",
         flexDirection: "row",
-        flexWrap: "wrap",
     },
+
+    logoPosition:{
+        position: "relative",
+        marginTop: "15px",
+        marginLeft: "15px",
+        zIndex: 1,
+        maxWidth: "25%"
+    },
+
     logo:{
-        flex: 1,
+        width: "30px",
+        height: "30px",
     },
+
     textColum:{
         flex: 1,
         flexDirection: "column",
         flexWrap: "wrap",
     },
+
     title:{
-        fontSize:20,
+        fontSize: "20px",
         color: '#FFFFFF'
     },
+
     subtitle:{
-        fontSize:20,
+        fontSize: "10px",
         color: '#FFFFFF'
     }
 });
+/*
+card-default {
+    display: grid;
+
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 2fr;
+
+    grid-template-areas: 
+        "img title"
+        "img url"
+        "img text";
+}
+*/
 
 //export{SocialCard} ;
