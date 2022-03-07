@@ -39,16 +39,18 @@ const styles = StyleSheet.create({
     
     card: {
         justifyContent: "center",
-        flexDirection: "row",
         flexWrap: "wrap",
-        width: "100%",
-        marginTop: 10,
+        flex:1
+        //width: "100%",
+        //alignSelf: 'stretch',
+        //marginTop: 10,
     },
 
     background: {
-        justifyContent: "center",
-        maxWidth: "100%",
-        height: "auto",
+        //justifyContent: "center",
+        //maxWidth: "100%",
+        //alignSelf: 'stretch',
+        height: "70%",
     },
 
     contentRow:{
@@ -57,22 +59,26 @@ const styles = StyleSheet.create({
     },
 
     logoPosition:{
-        position: "relative",
-        marginTop: 15,
+        //position: "relative",
+        marginTop: 50,
         marginLeft: 15,
         zIndex: 1,
-        maxWidth: "25%"
+        maxWidth: "35%",
+        flexDirection: "column",
     },
 
     logo:{
-        width: 30,
-        height: 30,
+        width: 100,
+        height: 100,
+        justifyContent: "center"
     },
 
     textColum:{
         flex: 1,
         flexDirection: "column",
         flexWrap: "wrap",
+        alignItems: "center",
+        height:"100%"
     },
 
     title:{
