@@ -12,7 +12,7 @@ export default function Menu() {
     <View style={styles.editor}>
 
       <Text>Gestion des boutons a afficher</Text>
-
+      {/*
       <label style={{marginBottom: "5px", textAlign: 'left'}}>
         <Text style={styles.lbl}>Titre</Text>
         <input type="text" onChange={e => changeText("Titre", e.target.value)}/>
@@ -43,6 +43,7 @@ export default function Menu() {
           <option value="4">Preset 4</option>
         </select>
       </label>
+  */}
     </View>
   );
 }
@@ -51,12 +52,12 @@ const styles = StyleSheet.create({
   editor: {
     flex: 1,
     textAlign: 'center',
-    marginTop: "10px",
-    borderTopWidth: "2px",
+    marginTop: 10,
+    borderTopWidth: 2,
     borderColor: "rgb(33, 150, 243)",
   },
 
   lbl: {
-    display: "block",
+    //display: "block",
   }
 });

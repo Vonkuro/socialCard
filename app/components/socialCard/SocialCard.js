@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         width: "100%",
-        marginTop: "10px",
+        marginTop: 10,
     },
 
     background: {
@@ -58,15 +58,15 @@ const styles = StyleSheet.create({
 
     logoPosition:{
         position: "relative",
-        marginTop: "15px",
-        marginLeft: "15px",
+        marginTop: 15,
+        marginLeft: 15,
         zIndex: 1,
         maxWidth: "25%"
     },
 
     logo:{
-        width: "30px",
-        height: "30px",
+        width: 30,
+        height: 30,
     },
 
     textColum:{
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
     },
 
     title:{
-        fontSize: "20px",
+        fontSize: 20,
         color: '#FFFFFF'
     },
 
     subtitle:{
-        fontSize: "10px",
+        fontSize: 10,
         color: '#FFFFFF'
     }
 });

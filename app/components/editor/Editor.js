@@ -23,27 +23,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    maxWidth: "800px",
+    maxWidth: 800,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: "10px",
-    font: "14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    marginTop: 10,
+    //font: "14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
   },
 
   AppTitle: {
       color: "white",
       backgroundColor: "rgb(33, 150, 243)",
-      borderRadius: "5px",
-      padding: "5px",
+      borderRadius: 5,
+      padding: 5,
       textAlign: "center",
-      fontSize: "1rem",
+      fontSize: 1,
   },
 
   socialCardConatiner: {
-    minWidth: "500px",
-    minWidth: "750px",
+    minWidth: 500,
+    minWidth: 750,
     borderColor: "rgb(33, 150, 243)",
-    borderWidth: "3px",
+    borderWidth: 3,
     backgroundColor: "rgb(33, 150, 243)",
   }
 });
