@@ -21,12 +21,12 @@ export default function Editor() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+    flex:1,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     maxWidth: 800,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 10,
+    minWidth: 300,
     //font: "14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
   },
 
