@@ -15,40 +15,55 @@ export default class SocialCard extends Component {
             (
                 {
                 card: {
+                    /*
+                    borderColor: "red",
+                    borderWidth: 2,
+                    */
                     justifyContent: "center",
                     flexWrap: "wrap",
                     flex:1 ,
-                    width: 380,
-                    height: 200,
                     alignSelf: 'stretch',
                 },
             
                 background: {
-                    height: 200,
                     flex:1,
                 },
             
                 contentRow:{
+                    /*
+                    borderColor: "blue",
+                    borderWidth: 2,
+                    */
                     width: "100%",
                     flexDirection: "row",
+                    flex: 1,
                 },
             
-                logoPosition:{
-                    marginTop: 50,
-                    marginLeft: 15,
-                    zIndex: 1,
-                    maxWidth: "35%",
+                logoHeight:{
+                    /*
+                    borderColor: "grey",
+                    borderWidth: 2,
+                    */
                     flex: 1,
                     flexDirection: "column",
                     flexWrap: "wrap",
-                    alignItems: "center",
+                    justifyContent: "center",
                     height:"100%",
+                },
+                logoWidth: {
+                    /*
+                    borderColor: "green",
+                    borderWidth: 2,
+                    */
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
                 },
             
                 logo:{
-                    width: 100,
-                    height: 100,
-                    justifyContent: "center",
+                    width: 130,
+                    height: 130,
+                    alignSelf: "center",
                     
                 },
             
@@ -81,8 +96,11 @@ export default class SocialCard extends Component {
             <View style={this.state.styles.card}>
             <ImageBackground source={ this.state.backgroundUri } style={this.state.styles.background}>
                 <View style={this.state.styles.contentRow}>
-                    <View style={ this.state.styles.logoPosition} >
-                        <Image style={this.state.styles.logo} source={ this.state.logoUri }></Image>
+                    <View style={ this.state.styles.logoHeight} >
+                        <View style={ this.state.styles.logoWidth} >
+                            <Image style={this.state.styles.logo} source={ this.state.logoUri }></Image>
+                        </View>
+                        
                     </View>
                     <View style={this.state.styles.textColum}>
                         <Text className="Titre" style={this.state.styles.title }> { this.state.titleText } </Text>
@@ -94,74 +112,6 @@ export default class SocialCard extends Component {
         );
     };
 
-    constructStyle()
-    {
-        this.setState
-        (
-            {
-                styles: StyleSheet.create
-                (
-                    {
-                        card: {
-                            justifyContent: "center",
-                            flexWrap: "wrap",
-                            flex:1 ,
-                            width: 380,
-                            height: 200,
-                            alignSelf: 'stretch',
-                        },
-                    
-                        background: {
-                            height: 200,
-                            flex:1,
-                        },
-                    
-                        contentRow:{
-                            width: "100%",
-                            flexDirection: "row",
-                        },
-                    
-                        logoPosition:{
-                            marginTop: 50,
-                            marginLeft: 15,
-                            zIndex: 1,
-                            maxWidth: "35%",
-                            flex: 1,
-                            flexDirection: "column",
-                            flexWrap: "wrap",
-                            alignItems: "center",
-                            height:"100%",
-                        },
-                    
-                        logo:{
-                            width: 100,
-                            height: 100,
-                            justifyContent: "center",
-                            
-                        },
-                    
-                        textColum:{
-                            flex: 1,
-                            flexDirection: "column",
-                            flexWrap: "wrap",
-                            alignItems: "center",
-                            justifyContent: 'center',
-                            height:"100%",
-                        },
-                    
-                        title:{
-                            fontSize: 20,
-                            color: '#FFFFFF',
-                        },
-                    
-                        subtitle:{
-                            fontSize: 10,
-                            color: '#FFFFFF',
-                        }
-                    }
-                ),
-            }
-        )
-    };
+
   
 }
