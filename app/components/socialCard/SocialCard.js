@@ -21,13 +21,9 @@ export default class SocialCard extends Component {
                     width: 380,
                     height: 200,
                     alignSelf: 'stretch',
-                    //marginTop: 10,
                 },
             
                 background: {
-                    //justifyContent: "center",
-                    //maxWidth: "100%",
-                    //alignSelf: 'stretch',
                     height: 200,
                     flex:1,
                 },
