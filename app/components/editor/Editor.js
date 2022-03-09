@@ -1,8 +1,9 @@
 // app/components/App.js
 // Alias pour Editor
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput, AsyncStorage  } from 'react-native';
+import { View, StyleSheet, Text, TextInput  } from 'react-native';
 import { Fragment, useState } from 'react/cjs/react.production.min';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
 import Menu from '../menu/Menu';
 import SocialCard from '../socialCard/SocialCard';
@@ -12,7 +13,7 @@ export default class Editor extends Component {
       super(props);
 
       this.state = {
-        name: 'Nom de la Carte',
+        nameText: 'Nom de la Carte',
         title: 'Le titre de la carte',
         text: 'Le sous-titre de la carte',
         logoUri: require("../socialCard/Card_test/logoJS.png"),
@@ -24,6 +25,7 @@ export default class Editor extends Component {
         text_handler : this.text_handler.bind(this),
         logo_handler : this.logo_handler.bind(this),
         cover_handler : this.cover_handler.bind(this),
+        saveState_handler : this.saveState_handler.bind(this),
       };
     }
 
@@ -65,7 +67,18 @@ export default class Editor extends Component {
       return result;
     }
 
-    
+    saveState_handler(value)
+    {
+      this.setState({nameText: value});
+      const configJson = JSON.stringify(this.state);
+      this.saveState(configJson);
+    }
+
+    async saveState(configJson)
+    {
+      await AsyncStorage.setItem( String(this.state.name) , configJson);
+    } 
+
     render () {
     return (
     <View style={styles.container}>

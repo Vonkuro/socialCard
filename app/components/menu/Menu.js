@@ -9,11 +9,7 @@ export default class Menu extends Component {
     return (
       <View>
         <Text>Nom :</Text>
-        <TextInput style={styles.input} onChangeText={(text) => {
-        this.props.handles.title_handler(text)
-        }
-      }
-      placeholder={this.props.name}/>
+        <TextInput style={styles.input} placeholder={this.props.name}/>
       <Text>Titre :</Text>
       <TextInput style={styles.input} onChangeText={(text) => {
         this.props.handles.title_handler(text)
@@ -29,7 +25,7 @@ export default class Menu extends Component {
       <Button title='Choisir un nouveau logo' onPress={this.props.handles.logo_handler}></Button>
       <Button title='Choisir un nouveau fond' onPress={this.props.handles.cover_handler}></Button>
 
-      <Button title='Enregistrer la carte'></Button>
+      <Button title='Enregistrer la carte' onPress={this.props.handles.saveState_handler}></Button>
     </View>
     )
 
