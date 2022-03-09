@@ -51,14 +51,14 @@ export default class Editor extends Component {
 
     cover_handler()
     {
-      this.uploadCover();
+      this.uploadCover().then( newCover =>{this.setState({ coverUri: { uri: newCover.uri } })});
     }
     async uploadCover()
     {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
-        aspect: [1, 1],
+        //aspect: [1, 1],
         quality: 1,
       });
       return result;

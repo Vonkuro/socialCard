@@ -20,7 +20,8 @@ export default class Menu extends Component {
         }
       }/>
 
-      <Button title='test upload' onPress={this.props.handles.logo_handler}></Button>
+      <Button title='test logo' onPress={this.props.handles.logo_handler}></Button>
+      <Button title='test cover' onPress={this.props.handles.cover_handler}></Button>
     </View>
     )
 
