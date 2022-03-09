@@ -26,6 +26,7 @@ export default class Editor extends Component {
         logo_handler : this.logo_handler.bind(this),
         cover_handler : this.cover_handler.bind(this),
         saveState_handler : this.saveState_handler.bind(this),
+        restoreState_handler : this.restoreState_handler.bind(this),
       };
     }
 
@@ -39,6 +40,7 @@ export default class Editor extends Component {
 
     logo_handler()
     {
+      // L'erreur vient de { uri: newLogo.uri } qui ne peut pas être JSON.stringify en l'état
       this.uploadLogo().then( newLogo =>{this.setState({ logoUri: { uri: newLogo.uri } })});
     }
     async uploadLogo()
@@ -54,6 +56,7 @@ export default class Editor extends Component {
 
     cover_handler()
     {
+      // L'erreur vient de { uri: newCover.uri } qui ne peut pas être JSON.stringify en l'état
       this.uploadCover().then( newCover =>{this.setState({ coverUri: { uri: newCover.uri } })});
     }
     async uploadCover()
@@ -67,16 +70,30 @@ export default class Editor extends Component {
       return result;
     }
 
+    // Handler qui s'occupe de la sauvegarde
     saveState_handler(value)
     {
       this.setState({nameText: value});
+      // bug ici car les uri des images personnalisé ne peuvent pas être transformée en string par JSON.stringify
       const configJson = JSON.stringify(this.state);
       this.saveState(configJson);
     }
-
     async saveState(configJson)
     {
       await AsyncStorage.setItem( String(this.state.name) , configJson);
+    } 
+
+    // Handler que j'ai créé afin d'afficher le string stocké dans le text Title (afin de vérifier)
+    restoreState_handler()
+    {
+      this.restoreState().then( oldStateJson => {
+        this.setState({title : oldStateJson})
+      });
+    }
+    async restoreState()
+    {
+      const result = await AsyncStorage.getItem( String(this.state.name));
+      return result;
     } 
 
     render () {

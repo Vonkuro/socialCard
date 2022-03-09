@@ -26,6 +26,7 @@ export default class Menu extends Component {
       <Button title='Choisir un nouveau fond' onPress={this.props.handles.cover_handler}></Button>
 
       <Button title='Enregistrer la carte' onPress={this.props.handles.saveState_handler}></Button>
+      <Button title='Test sauvegarde' onPress={this.props.handles.restoreState_handler}></Button>
     </View>
     )
 
