@@ -1,7 +1,7 @@
 // app/components/App.js
 // Alias pour Editor
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, StyleSheet, Text, TextInput, AsyncStorage  } from 'react-native';
 import { Fragment, useState } from 'react/cjs/react.production.min';
 import * as ImagePicker from 'expo-image-picker';
 import Menu from '../menu/Menu';
@@ -12,6 +12,7 @@ export default class Editor extends Component {
       super(props);
 
       this.state = {
+        name: 'Nom de la Carte',
         title: 'Le titre de la carte',
         text: 'Le sous-titre de la carte',
         logoUri: require("../socialCard/Card_test/logoJS.png"),
@@ -72,7 +73,7 @@ export default class Editor extends Component {
   
         <SocialCard config={this.state}/>
 
-        <Menu handles={this.handles} />
+        <Menu handles={this.handles} name={this.state.name}/>
     </View>
     )}
 }
