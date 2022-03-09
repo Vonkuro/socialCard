@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import { Fragment, useState } from 'react/cjs/react.production.min';
+import * as ImagePicker from 'expo-image-picker';
 import Menu from '../menu/Menu';
 import SocialCard from '../socialCard/SocialCard';
 
@@ -27,6 +28,17 @@ export default class Editor extends Component {
 
     text_handler(value) {
       this.setState({ text: value });
+    }
+
+    async upload()
+    {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      return result;
     }
 
     
