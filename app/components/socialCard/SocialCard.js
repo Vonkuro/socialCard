@@ -103,13 +103,11 @@ export default class SocialCard extends Component {
                         
                     </View>
                     <View style={this.state.styles.textColum}>
-                        <Text className="Titre" style={this.state.styles.title }> { this.state.titleText } </Text>
-                        <Text style={this.state.styles.subtitle}> { this.state.subtitleText } </Text>
+                        <Text className="Titre" style={this.state.styles.title }> { this.props.config["title"] } </Text>
+                        <Text style={this.state.styles.subtitle}> { this.props.config["text"] } </Text>
                     </View>
                 </View>
             </ImageBackground>
-            <Text className="testing"> { this.props.config["title"] } </Text>
-            <Text className="testing"> { this.props.config["text"] } </Text>
             </View>
         );
     };

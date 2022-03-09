@@ -7,10 +7,19 @@ export default class Menu extends Component {
   render() {
 
     return (
+      <View>
+      <Text>Titre :</Text>
       <TextInput style={styles.input} onChangeText={(text) => {
-        this.props.handler(text)
+        this.props.handles.title_handler(text)
         }
       }/>
+
+      <Text>Text :</Text>
+      <TextInput style={styles.input} onChangeText={(text) => {
+        this.props.handles.text_handler(text)
+        }
+      }/>
+    </View>
     )
 
   }

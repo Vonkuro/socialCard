@@ -15,13 +15,21 @@ export default class Editor extends Component {
         text: 'Texte de la carte',
       };
 
-      this.handler = this.handler.bind(this);
+      this.handles = {
+        title_handler : this.title_handler.bind(this),
+        text_handler : this.text_handler.bind(this),
+      };
     }
 
-    handler(value) {
+    title_handler(value) {
       this.setState({ title: value });
     }
 
+    text_handler(value) {
+      this.setState({ text: value });
+    }
+
+    
     render () {
     return (
     <View style={styles.container}>
@@ -29,7 +37,7 @@ export default class Editor extends Component {
   
         <SocialCard config={this.state}/>
 
-        <Menu handler={this.handler} />
+        <Menu handles={this.handles} />
     </View>
     )}
 }
