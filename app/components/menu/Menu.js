@@ -19,6 +19,8 @@ export default class Menu extends Component {
         this.props.handles.text_handler(text)
         }
       }/>
+
+      <Button title='test upload' onPress={this.props.handles.logo_handler}></Button>
     </View>
     )
 

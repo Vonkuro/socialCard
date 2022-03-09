@@ -19,6 +19,8 @@ export default class Editor extends Component {
       this.handles = {
         title_handler : this.title_handler.bind(this),
         text_handler : this.text_handler.bind(this),
+        logo_handler : this.logo_handler.bind(this),
+        cover_handler : this.cover_handler.bind(this),
       };
     }
 
@@ -30,12 +32,31 @@ export default class Editor extends Component {
       this.setState({ text: value });
     }
 
-    async upload()
+    logo_handler()
+    {
+      this.uploadLogo();
+    }
+    async uploadLogo()
     {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
-        aspect: [4, 3],
+        aspect: [1, 1],
+        quality: 1,
+      });
+      return result;
+    }
+
+    cover_handler()
+    {
+      this.uploadCover();
+    }
+    async uploadCover()
+    {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [1, 1],
         quality: 1,
       });
       return result;
