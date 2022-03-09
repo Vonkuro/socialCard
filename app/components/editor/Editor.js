@@ -12,8 +12,10 @@ export default class Editor extends Component {
       super(props);
 
       this.state = {
-        title: 'Mon titre',
-        text: 'Texte de la carte',
+        title: 'Le titre de la carte',
+        text: 'Le sous-titre de la carte',
+        logoUri: require("../socialCard/Card_test/logoJS.png"),
+        coverUri: require('../socialCard/Card_test/landscape.jpg'),
       };
 
       this.handles = {
@@ -34,7 +36,7 @@ export default class Editor extends Component {
 
     logo_handler()
     {
-      this.uploadLogo();
+      this.uploadLogo().then( newLogo =>{this.setState({ logoUri: { uri: newLogo.uri } })});
     }
     async uploadLogo()
     {
