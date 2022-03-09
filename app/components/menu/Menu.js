@@ -19,6 +19,9 @@ export default class Menu extends Component {
         this.props.handles.text_handler(text)
         }
       }/>
+
+      <Button title='Choisir un nouveau logo' onPress={this.props.handles.logo_handler}></Button>
+      <Button title='Choisir un nouveau fond' onPress={this.props.handles.cover_handler}></Button>
     </View>
     )
 

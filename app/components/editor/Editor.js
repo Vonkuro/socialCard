@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import { Fragment, useState } from 'react/cjs/react.production.min';
+import * as ImagePicker from 'expo-image-picker';
 import Menu from '../menu/Menu';
 import SocialCard from '../socialCard/SocialCard';
 
@@ -11,13 +12,17 @@ export default class Editor extends Component {
       super(props);
 
       this.state = {
-        title: 'Mon titre',
-        text: 'Texte de la carte',
+        title: 'Le titre de la carte',
+        text: 'Le sous-titre de la carte',
+        logoUri: require("../socialCard/Card_test/logoJS.png"),
+        coverUri: require('../socialCard/Card_test/landscape.jpg'),
       };
 
       this.handles = {
         title_handler : this.title_handler.bind(this),
         text_handler : this.text_handler.bind(this),
+        logo_handler : this.logo_handler.bind(this),
+        cover_handler : this.cover_handler.bind(this),
       };
     }
 
@@ -27,6 +32,36 @@ export default class Editor extends Component {
 
     text_handler(value) {
       this.setState({ text: value });
+    }
+
+    logo_handler()
+    {
+      this.uploadLogo().then( newLogo =>{this.setState({ logoUri: { uri: newLogo.uri } })});
+    }
+    async uploadLogo()
+    {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
+      return result;
+    }
+
+    cover_handler()
+    {
+      this.uploadCover().then( newCover =>{this.setState({ coverUri: { uri: newCover.uri } })});
+    }
+    async uploadCover()
+    {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        //aspect: [1, 1],
+        quality: 1,
+      });
+      return result;
     }
 
     

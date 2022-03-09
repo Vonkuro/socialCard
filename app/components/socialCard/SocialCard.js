@@ -6,11 +6,6 @@ export default class SocialCard extends Component {
     {
         super();
         this.state = {
-            backgroundUri: require('./Card_test/landscape.jpg'),
-            logoUri: require("./Card_test/logoJS.png"),
-            titleText: "Le titre de la carte",
-            subtitleText: "Le sous-titre de la carte",
-
             styles: StyleSheet.create
             (
                 {
@@ -94,11 +89,11 @@ export default class SocialCard extends Component {
     {
         return (
             <View style={this.state.styles.card}>
-            <ImageBackground source={ this.state.backgroundUri } style={this.state.styles.background}>
+            <ImageBackground source={ this.props.config["coverUri"] } style={this.state.styles.background}>
                 <View style={this.state.styles.contentRow}>
                     <View style={ this.state.styles.logoHeight} >
                         <View style={ this.state.styles.logoWidth} >
-                            <Image style={this.state.styles.logo} source={ this.state.logoUri }></Image>
+                            <Image style={this.state.styles.logo} source={ this.props.config["logoUri"] }></Image>
                         </View>
                         
                     </View>
