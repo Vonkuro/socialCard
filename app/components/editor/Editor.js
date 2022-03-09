@@ -1,21 +1,37 @@
 // app/components/App.js
 // Alias pour Editor
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { Fragment } from 'react/cjs/react.production.min';
+import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { Fragment, useState } from 'react/cjs/react.production.min';
 import Menu from '../menu/Menu';
 import SocialCard from '../socialCard/SocialCard';
 
-export default function Editor() {
+export default class Editor extends Component {
+    constructor(props){
+      super(props);
+
+      this.state = {
+        title: 'Mon titre',
+        text: 'Texte de la carte',
+      };
+
+      this.handler = this.handler.bind(this);
+    }
+
+    handler(value) {
+      this.setState({ title: value });
+    }
+
+    render () {
     return (
     <View style={styles.container}>
         <Text style={styles.AppTitle} >Application Creation de cartes sociales</Text>
+  
+        <SocialCard config={this.state}/>
 
-        <SocialCard/>
-
-        <Menu/>
+        <Menu handler={this.handler} />
     </View>
-  );
+    )}
 }
 
 const styles = StyleSheet.create({
@@ -36,7 +52,6 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       padding: 5,
       textAlign: "center",
-      fontSize: 1,
   },
 
   socialCardConatiner: {

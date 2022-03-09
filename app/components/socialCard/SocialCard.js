@@ -108,6 +108,8 @@ export default class SocialCard extends Component {
                     </View>
                 </View>
             </ImageBackground>
+            <Text className="testing"> { this.props.config["title"] } </Text>
+            <Text className="testing"> { this.props.config["text"] } </Text>
             </View>
         );
     };

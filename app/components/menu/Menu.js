@@ -1,53 +1,33 @@
 // app/components/Editor.js
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
 
 
-export default function Menu() {
-  function changeText(propName, value) {
-    console.log(`Passage de la prop ${propName} à ${value}.`)
+export default class Menu extends Component {
+  render() {
+
+    return (
+      <TextInput style={styles.input} onChangeText={(text) => {
+        this.props.handler(text)
+        }
+      }/>
+    )
+
   }
-
-  return (
-    <View style={styles.editor}>
-
-      <Text>Gestion des boutons a afficher</Text>
-      {/*
-      <label style={{marginBottom: "5px", textAlign: 'left'}}>
-        <Text style={styles.lbl}>Titre</Text>
-        <input type="text" onChange={e => changeText("Titre", e.target.value)}/>
-      </label>
-
-      <label style={{marginBottom: "5px", textAlign: 'left'}}>
-        <Text style={styles.lbl}>Texte</Text>
-        <input type="text" onChange={e => changeText("Text", e.target.value)}/>
-      </label>
-
-      <label style={{marginBottom: "5px", textAlign: 'left'}}>
-        <Text style={styles.lbl}>Image</Text>
-        <Button title='Charger'/>
-      </label>
-
-      <label style={{marginBottom: "5px", textAlign: 'left'}}>
-        <Text style={styles.lbl}>Logo</Text>
-        <Button title='Charger'/>
-      </label>
-
-      <label style={{marginBottom: "5px", textAlign: 'left'}}>
-      <Text style={styles.lbl}>Selection du preset</Text>
-        
-        <select style={{marginBottom: "5px", textAlign: 'left'}}>
-          <option value="1">Preset 1</option>
-          <option value="2">Preset 2</option>
-          <option value="3">Preset 3</option>
-          <option value="4">Preset 4</option>
-        </select>
-      </label>
-  */}
-    </View>
-  );
 }
-
+//<TextInput type="text" style={styles.input} onChange={e => this.props.handler(e.target.value)} value={props.prop}/>
+/*
+<View style={styles.editor}>
+        <Text>Gestion des boutons a afficher</Text>
+      
+        <Fragment>
+          <Text style={styles.lbl}>Titre</Text>
+          <Button title='button change' onClick={this.props.handler}/>
+          
+          <TextInput value={this.props.prop} onChangeText={() => this.props.handler()}/>
+        </Fragment>
+      </View>
+*/
 const styles = StyleSheet.create({
   editor: {
     flex: 1,
@@ -58,6 +38,10 @@ const styles = StyleSheet.create({
   },
 
   lbl: {
-    //display: "block",
-  }
+  },
+
+  input: {
+    borderWidth: 1,
+    borderColor: "rgb(100, 100, 100)"
+  },
 });
