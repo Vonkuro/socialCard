@@ -187,25 +187,41 @@ export default class Editor extends Component {
     render () {
     return (
     <View style={styles.container}>
+      <View style={styles.topBackground}>
         <Text style={styles.AppTitle} >Application Creation de cartes sociales</Text>
-  
-        <SocialCard config={this.state} />
+      </View>
 
+      <View style={styles.midBackground}>
+        <SocialCard config={this.state} />
+      </View>
+
+      <View style={styles.bottomBackground}>
         <Menu handles={this.handles} values={this.state}/>
+        </View>
     </View>
     )}
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     flex:1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    //alignItems: 'center',
     justifyContent: 'center',
     maxWidth: 800,
     minWidth: 300,
     //font: "14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+  },
+
+  topBackground:{
+    backgroundColor: '#0078d4',
+    flex:3
+  },
+  midBackground:{
+    flex:10
+  },
+  bottomBackground:{
+    flex:15
   },
 
   AppTitle: {
@@ -214,6 +230,8 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       padding: 5,
       textAlign: "center",
+      fontSize:20,
+      marginTop: 25
   },
 
   socialCardConatiner: {

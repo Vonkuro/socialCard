@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, Image, View, Dimensions, Text, Button } from 'react-native';
+import { StyleSheet, ImageBackground, Image, View, Dimensions , Text } from 'react-native';
 
 export default class SocialCard extends Component {
     constructor()
     {
         super();
         
+        const logoSize = Dimensions.get('window').width * 0.33;
+
         this.state = {
             styles: StyleSheet.create
             (
@@ -57,8 +59,9 @@ export default class SocialCard extends Component {
                 },
             
                 logo:{
-                    width: 130,
-                    height: 130,
+                    // environ 130
+                    width: logoSize,
+                    height: logoSize,
                     alignSelf: "center",
                     
                 },
@@ -83,14 +86,11 @@ export default class SocialCard extends Component {
                 }
                 }
             ),
-            imageUrl: "http://192.168.1.56:19000/app/components/socialCard/Card_test/paysage.png"
         };
     }
 
     render()
     {
-        const logoUri = require("../socialCard/Card_test/logoJS.png");
-        const coverUri = require('../socialCard/Card_test/landscape.jpg');
         return (
             <View style={ this.state.styles.card }>
             <ImageBackground source={ this.props.config["coverUri"]  } style={this.state.styles.background}>
