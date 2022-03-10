@@ -93,11 +93,11 @@ export default class SocialCard extends Component {
         const coverUri = require('../socialCard/Card_test/landscape.jpg');
         return (
             <View style={ this.state.styles.card }>
-            <ImageBackground source={ coverUri } style={this.state.styles.background}>
+            <ImageBackground source={ this.props.config["coverUri"]  } style={this.state.styles.background}>
                 <View style={this.state.styles.contentRow}>
                     <View style={ this.state.styles.logoHeight} >
                         <View style={ this.state.styles.logoWidth} >
-                            <Image style={this.state.styles.logo} source={ logoUri }></Image>
+                            <Image style={this.state.styles.logo} source={ this.props.config["logoUri"]  }></Image>
                         </View>
                         
                     </View>

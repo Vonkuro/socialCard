@@ -17,8 +17,8 @@ export default class Editor extends Component {
         title: 'Le titre de la carte',
         text: 'Le sous-titre de la carte',
         // Temporairement desactivé
-        logoUri: "../socialCard/Card_test/logoJS.png",
-        coverUri: '../socialCard/Card_test/landscape.jpg',
+        logoUri: require("../socialCard/Card_test/logoJS.png"),
+        coverUri: require('../socialCard/Card_test/landscape.jpg'),
       };
 
       this.handles = {
@@ -53,7 +53,6 @@ export default class Editor extends Component {
     async uploadLogo()
     {
       let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [1, 1],
         quality: 1,
@@ -69,7 +68,6 @@ export default class Editor extends Component {
     async uploadCover()
     {
       let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         //aspect: [1, 1],
         quality: 1,
@@ -81,9 +79,45 @@ export default class Editor extends Component {
     saveState_handler()
     {
       // bug ici car les uri des images personnalisé ne peuvent pas être transformée en string par JSON.stringify
-      const configJson = JSON.stringify(this.state);
+      //
+      var config;
+      if (isNaN(this.state.coverUri) ) {
+        if (isNaN(this.state.logoUri) ) {
+          config = { name: this.state.name,
+                    title: this.state.title,
+                    text: this.state.text,
+                    logoUri: this.state.logoUri.uri,
+                    coverUri: this.state.coverUri.uri,
+                  };
+        } else{
+          config = { name: this.state.name,
+            title: this.state.title,
+            text: this.state.text,
+            logoUri: this.state.logoUri,
+            coverUri: this.state.coverUri.uri,
+          };
+        }
+      } else {
+        if (isNaN(this.state.logoUri) ) {
+          config = { name: this.state.name,
+            title: this.state.title,
+            text: this.state.text,
+            logoUri: this.state.logoUri.uri,
+            coverUri: this.state.coverUri,
+          };
+        } else {
+          config = { name: this.state.name,
+            title: this.state.title,
+            text: this.state.text,
+            logoUri: this.state.logoUri,
+            coverUri: this.state.coverUri,
+          };
+        }
+      }
+
+
+      const configJson = JSON.stringify(config);
       this.saveState(configJson);
-      console.log(configJson);
     }
     async saveState(configJson)
     {
@@ -97,17 +131,29 @@ export default class Editor extends Component {
         .catch(() => {
           this.showAlert();
 
-          console.log("show alert")
           return;
         })
         .then( oldStateJson => {
           if (oldStateJson == undefined || oldStateJson == null) {
             this.showAlert();
 
-            console.log("show alert")
             return;
           }
           const data = JSON.parse(oldStateJson);
+
+
+          if (isNaN( data.coverUri )) {
+            if (isNaN( data.logoUri ) ) {
+              data.coverUri = {uri : data.coverUri};
+              data.logoUri = {uri : data.logoUri};
+            } else{
+              data.coverUri = {uri : data.coverUri};
+            }
+          } else {
+            if (isNaN( data.logoUri )) {
+              data.logoUri = {uri : data.logoUri};
+            }
+          }
 
           this.setState({ name: data.name });
           this.setState({ title: data.title });
