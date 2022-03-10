@@ -9,24 +9,37 @@ export default class Menu extends Component {
     return (
       <View>
         <Text>Nom :</Text>
-        <TextInput style={styles.input} placeholder={this.props.name}/>
+        <TextInput
+        style={styles.input}
+        value={this.props.values.name}
+        onChangeText={(text) => {
+          this.props.handles.name_handler(text)
+        }}
+        />
       <Text>Titre :</Text>
-      <TextInput style={styles.input} onChangeText={(text) => {
-        this.props.handles.title_handler(text)
-        }
-      }/>
+
+      <TextInput
+        style={styles.input}
+        onChangeText={(text) => {
+          this.props.handles.title_handler(text)
+          }}
+        value={this.props.values.title}
+      />
 
       <Text>Text :</Text>
-      <TextInput style={styles.input} onChangeText={(text) => {
-        this.props.handles.text_handler(text)
-        }
-      }/>
+      <TextInput
+        style={styles.input}
+        onChangeText={(text) => {
+          this.props.handles.text_handler(text)
+          }}
+          value={this.props.values.text}
+      />
 
       <Button title='Choisir un nouveau logo' onPress={this.props.handles.logo_handler}></Button>
       <Button title='Choisir un nouveau fond' onPress={this.props.handles.cover_handler}></Button>
 
       <Button title='Enregistrer la carte' onPress={this.props.handles.saveState_handler}></Button>
-      <Button title='Test sauvegarde' onPress={this.props.handles.restoreState_handler}></Button>
+      <Button title='Restaurer sauvegarde' onPress={this.props.handles.restoreState_handler}></Button>
     </View>
     )
 

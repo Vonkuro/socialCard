@@ -1,7 +1,7 @@
 // app/components/App.js
 // Alias pour Editor
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput  } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Fragment, useState } from 'react/cjs/react.production.min';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
@@ -13,14 +13,16 @@ export default class Editor extends Component {
       super(props);
 
       this.state = {
-        nameText: 'Nom de la Carte',
+        name: 'Nom de la Carte',
         title: 'Le titre de la carte',
         text: 'Le sous-titre de la carte',
-        logoUri: require("../socialCard/Card_test/logoJS.png"),
-        coverUri: require('../socialCard/Card_test/landscape.jpg'),
+        // Temporairement desactivé
+        logoUri: "../socialCard/Card_test/logoJS.png",
+        coverUri: '../socialCard/Card_test/landscape.jpg',
       };
 
       this.handles = {
+        name_handler : this.name_handler.bind(this),
         title_handler : this.title_handler.bind(this),
         text_handler : this.text_handler.bind(this),
         logo_handler : this.logo_handler.bind(this),
@@ -28,6 +30,11 @@ export default class Editor extends Component {
         saveState_handler : this.saveState_handler.bind(this),
         restoreState_handler : this.restoreState_handler.bind(this),
       };
+    }
+
+    // Handlers
+    name_handler(value) {
+      this.setState({ name : value })
     }
 
     title_handler(value) {
@@ -71,12 +78,12 @@ export default class Editor extends Component {
     }
 
     // Handler qui s'occupe de la sauvegarde
-    saveState_handler(value)
+    saveState_handler()
     {
-      this.setState({nameText: value});
       // bug ici car les uri des images personnalisé ne peuvent pas être transformée en string par JSON.stringify
       const configJson = JSON.stringify(this.state);
       this.saveState(configJson);
+      console.log(configJson);
     }
     async saveState(configJson)
     {
@@ -86,24 +93,59 @@ export default class Editor extends Component {
     // Handler que j'ai créé afin d'afficher le string stocké dans le text Title (afin de vérifier)
     restoreState_handler()
     {
-      this.restoreState().then( oldStateJson => {
-        this.setState({title : oldStateJson})
-      });
+      this.restoreState()
+        .catch(() => {
+          this.showAlert();
+
+          console.log("show alert")
+          return;
+        })
+        .then( oldStateJson => {
+          if (oldStateJson == undefined || oldStateJson == null) {
+            this.showAlert();
+
+            console.log("show alert")
+            return;
+          }
+          const data = JSON.parse(oldStateJson);
+
+          this.setState({ name: data.name });
+          this.setState({ title: data.title });
+          this.setState({ text: data.text });
+          this.setState({ logoUri: data.logoUri });
+          this.setState({ coverUri: data.coverUri });
+        });
     }
     async restoreState()
     {
-      const result = await AsyncStorage.getItem( String(this.state.name));
-      return result;
+      return await AsyncStorage.getItem( String(this.state.name) )
     } 
 
+    //Alert
+    showAlert = () => {
+      Alert.alert(
+        "Chargement impossible",
+        "Aucune carte n'est enregistrée sous se nom",
+        [{
+          text: "OK",
+        }],
+        {
+          cancelable: true,
+        }
+      )
+    }
+
+    /**
+     * Render function 
+     */
     render () {
     return (
     <View style={styles.container}>
         <Text style={styles.AppTitle} >Application Creation de cartes sociales</Text>
   
-        <SocialCard config={this.state}/>
+        <SocialCard config={this.state} />
 
-        <Menu handles={this.handles} name={this.state.name}/>
+        <Menu handles={this.handles} values={this.state}/>
     </View>
     )}
 }
