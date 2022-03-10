@@ -187,8 +187,9 @@ export default class Editor extends Component {
     render () {
     return (
     <View style={styles.container}>
+      <View>
         <Text style={styles.AppTitle} >Application Creation de cartes sociales</Text>
-  
+      </View>
         <SocialCard config={this.state} />
 
         <Menu handles={this.handles} values={this.state}/>
@@ -198,7 +199,6 @@ export default class Editor extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     flex:1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -214,6 +214,7 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       padding: 5,
       textAlign: "center",
+      fontSize:20,
   },
 
   socialCardConatiner: {
