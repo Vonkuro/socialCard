@@ -5,6 +5,7 @@ export default class SocialCard extends Component {
     constructor()
     {
         super();
+        
         this.state = {
             styles: StyleSheet.create
             (
@@ -82,18 +83,21 @@ export default class SocialCard extends Component {
                 }
                 }
             ),
+            imageUrl: "http://192.168.1.56:19000/app/components/socialCard/Card_test/paysage.png"
         };
     }
 
     render()
     {
+        const logoUri = require("../socialCard/Card_test/logoJS.png");
+        const coverUri = require('../socialCard/Card_test/landscape.jpg');
         return (
-            <View style={this.state.styles.card}>
-            <ImageBackground source={ this.props.config["coverUri"] } style={this.state.styles.background}>
+            <View style={ this.state.styles.card }>
+            <ImageBackground source={ this.props.config["coverUri"]  } style={this.state.styles.background}>
                 <View style={this.state.styles.contentRow}>
                     <View style={ this.state.styles.logoHeight} >
                         <View style={ this.state.styles.logoWidth} >
-                            <Image style={this.state.styles.logo} source={ this.props.config["logoUri"] }></Image>
+                            <Image style={this.state.styles.logo} source={ this.props.config["logoUri"]  }></Image>
                         </View>
                         
                     </View>
@@ -106,7 +110,7 @@ export default class SocialCard extends Component {
             </View>
         );
     };
-
+// this.props.config["testUri"]
 
   
 }
